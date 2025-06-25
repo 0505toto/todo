@@ -3,109 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高機能TODOリスト</title>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <title>ProjectHub - Your Ultimate Project Management Tool</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <h1>My TODO List Portal</h1>
-    </header>
+    <div id="app-container">
 
-    <main>
-        <section class="task-add-container">
-            <h2>新しいタスクを追加</h2>
-            <form id="add-task-form">
-                <div class="form-group">
-                    <label for="task-title">タスク内容</label>
-                    <input type="text" id="task-title" placeholder="例：プロジェクトの企画書を提出する" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="task-priority">優先順位</label>
-                    <select id="task-priority">
-                        <option value="high">高</option>
-                        <option value="medium" selected>中</option>
-                        <option value="low">低</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="task-due-date">日付設定</label>
-                    <input type="date" id="task-due-date">
-                </div>
-
-                <div class="form-group">
-                    <label for="recurring-type">繰り返し</label>
-                    <select id="recurring-type">
-                        <option value="none" selected>なし</option>
-                        <option value="weekly">毎週</option>
-                        <option value="monthly">毎月</option>
-                        <option value="specific-date">特定日</option>
-                    </select>
-                </div>
-
-                <div id="recurring-options-wrapper" style="display:none;">
-                    <div id="weekly-options" class="recurring-option">
-                        <label>曜日を選択:</label>
-                        <input type="checkbox" id="weekday-sun" value="0"><label for="weekday-sun">日</label>
-                        <input type="checkbox" id="weekday-mon" value="1"><label for="weekday-mon">月</label>
-                        <input type="checkbox" id="weekday-tue" value="2"><label for="weekday-tue">火</label>
-                        <input type="checkbox" id="weekday-wed" value="3"><label for="weekday-wed">水</label>
-                        <input type="checkbox" id="weekday-thu" value="4"><label for="weekday-thu">木</label>
-                        <input type="checkbox" id="weekday-fri" value="5"><label for="weekday-fri">金</label>
-                        <input type="checkbox" id="weekday-sat" value="6"><label for="weekday-sat">土</label>
-                    </div>
-                    <div id="monthly-options" class="recurring-option">
-                        <label for="monthly-day">毎月</label>
-                        <input type="number" id="monthly-day" min="1" max="31">
-                        <label>日</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="autogenerate-timing">自動生成</label>
-                    <select id="autogenerate-timing">
-                        <option value="none" selected>しない</option>
-                        <option value="1-day-before">1日前</option>
-                        <option value="3-days-before">3日前</option>
-                        <option value="1-week-before">1週間前</option>
-                        <option value="2-weeks-before">2週間前</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="add-button">タスクを追加</button>
-            </form>
-        </section>
-
-        <section class="task-list-container">
-            <h2>タスクリスト</h2>
-            <ul id="task-list">
-                <li>
-                    <span class="priority-high">高</span>
-                    <div class="task-content">
-                        <p class="task-title">【サンプル】部屋の掃除をする</p>
-                        <p class="task-due">期日: 2025-07-30</p>
-                    </div>
-                    <div class="task-actions">
-                        <button class="complete-btn">完了</button>
-                        <button class="delete-btn">削除</button>
-                    </div>
-                </li>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-cubes"></i> ProjectHub</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> ダッシュボード</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> マイタスク</a></li>
+                <li><a href="#"><i class="fas fa-inbox"></i> 受信トレイ <span class="notification-badge">3</span></a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> カレンダー</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> レポート</a></li>
             </ul>
-        </section>
-
-        <section class="completed-task-list-container">
-            <h2>完了したタスク</h2>
-            <ul id="completed-task-list">
+            <div class="sidebar-projects">
+                <h4><i class="fas fa-folder"></i> プロジェクト</h4>
+                <ul>
+                    <li><a href="#"><span class="project-color-dot blue"></span> 新ウェブサイト開発</a></li>
+                    <li><a href="#"><span class="project-color-dot green"></span> 2025年Q3マーケティング</a></li>
+                    <li><a href="#"><span class="project-color-dot orange"></span> モバイルアプリ v2.0</a></li>
+                    <li><button class="add-project-btn"><i class="fas fa-plus"></i> 新規プロジェクト</button></li>
                 </ul>
-        </section>
-    </main>
+            </div>
+        </nav>
 
-    <footer>
-        <p>&copy; 2025 Your TODO List Portal</p>
-    </footer>
+        <div id="main-content">
+
+            <header id="main-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle"><i class="fas fa-bars"></i></button>
+                    <h2>新ウェブサイト開発</h2>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="タスクを検索...">
+                    </div>
+                    <button class="action-btn"><i class="fas fa-share-alt"></i> 共有</button>
+                    <button class="action-btn primary"><i class="fas fa-plus"></i> タスクを追加</button>
+                    <div class="user-menu">
+                        <img src="https://i.pravatar.cc/40" alt="User Avatar" class="user-avatar">
+                        </div>
+                </div>
+            </header>
+
+            <main id="app-view">
+                <div class="kanban-board">
+                    <div class="kanban-list">
+                        <h3 class="list-title">ToDo <span class="task-count">4</span></h3>
+                        <div class="list-cards">
+                            <article class="kanban-card">
+                                <h4>サイトの基本設計を完了させる</h4>
+                                <div class="card-meta">
+                                    <span class="due-date"><i class="far fa-clock"></i> 6月30日</span>
+                                    <span class="priority high">高</span>
+                                </div>
+                                <div class="card-assignees">
+                                    <img src="https://i.pravatar.cc/24?u=a" alt="User Avatar">
+                                </div>
+                            </article>
+                            <article class="kanban-card">
+                                <h4>ロゴデザインのドラフト作成</h4>
+                                <div class="card-meta">
+                                    <span class="due-date"><i class="far fa-clock"></i> 7月2日</span>
+                                    <span class="priority medium">中</span>
+                                </div>
+                                <div class="card-assignees">
+                                     <img src="https://i.pravatar.cc/24?u=b" alt="User Avatar">
+                                     <img src="https://i.pravatar.cc/24?u=c" alt="User Avatar">
+                                </div>
+                            </article>
+                        </div>
+                        <button class="add-card-btn"><i class="fas fa-plus"></i> カードを追加</button>
+                    </div>
+
+                    <div class="kanban-list">
+                        <h3 class="list-title">In Progress <span class="task-count">2</span></h3>
+                         <div class="list-cards"></div>
+                        <button class="add-card-btn"><i class="fas fa-plus"></i> カードを追加</button>
+                    </div>
+
+                    <div class="kanban-list">
+                        <h3 class="list-title">Done <span class="task-count">1</span></h3>
+                         <div class="list-cards"></div>
+                        <button class="add-card-btn"><i class="fas fa-plus"></i> カードを追加</button>
+                    </div>
+
+                    <div class="add-new-list">
+                        <button><i class="fas fa-plus"></i> 新しいリストを追加</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="modal-container" class="hidden">
+        <div class="modal-content">
+            </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
