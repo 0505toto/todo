@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高機能TODOリスト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My TODO List Portal</h1>
+    </header>
+
+    <main>
+        <section class="task-add-container">
+            <h2>新しいタスクを追加</h2>
+            <form id="add-task-form">
+                <div class="form-group">
+                    <label for="task-title">タスク内容</label>
+                    <input type="text" id="task-title" placeholder="例：プロジェクトの企画書を提出する" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-priority">優先順位</label>
+                    <select id="task-priority">
+                        <option value="high">高</option>
+                        <option value="medium" selected>中</option>
+                        <option value="low">低</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-due-date">日付設定</label>
+                    <input type="date" id="task-due-date">
+                </div>
+
+                <div class="form-group">
+                    <label for="recurring-type">繰り返し</label>
+                    <select id="recurring-type">
+                        <option value="none" selected>なし</option>
+                        <option value="weekly">毎週</option>
+                        <option value="monthly">毎月</option>
+                        <option value="specific-date">特定日</option>
+                    </select>
+                </div>
+
+                <div id="recurring-options-wrapper" style="display:none;">
+                    <div id="weekly-options" class="recurring-option">
+                        <label>曜日を選択:</label>
+                        <input type="checkbox" id="weekday-sun" value="0"><label for="weekday-sun">日</label>
+                        <input type="checkbox" id="weekday-mon" value="1"><label for="weekday-mon">月</label>
+                        <input type="checkbox" id="weekday-tue" value="2"><label for="weekday-tue">火</label>
+                        <input type="checkbox" id="weekday-wed" value="3"><label for="weekday-wed">水</label>
+                        <input type="checkbox" id="weekday-thu" value="4"><label for="weekday-thu">木</label>
+                        <input type="checkbox" id="weekday-fri" value="5"><label for="weekday-fri">金</label>
+                        <input type="checkbox" id="weekday-sat" value="6"><label for="weekday-sat">土</label>
+                    </div>
+                    <div id="monthly-options" class="recurring-option">
+                        <label for="monthly-day">毎月</label>
+                        <input type="number" id="monthly-day" min="1" max="31">
+                        <label>日</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="autogenerate-timing">自動生成</label>
+                    <select id="autogenerate-timing">
+                        <option value="none" selected>しない</option>
+                        <option value="1-day-before">1日前</option>
+                        <option value="3-days-before">3日前</option>
+                        <option value="1-week-before">1週間前</option>
+                        <option value="2-weeks-before">2週間前</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="add-button">タスクを追加</button>
+            </form>
+        </section>
+
+        <section class="task-list-container">
+            <h2>タスクリスト</h2>
+            <ul id="task-list">
+                <li>
+                    <span class="priority-high">高</span>
+                    <div class="task-content">
+                        <p class="task-title">【サンプル】部屋の掃除をする</p>
+                        <p class="task-due">期日: 2025-07-30</p>
+                    </div>
+                    <div class="task-actions">
+                        <button class="complete-btn">完了</button>
+                        <button class="delete-btn">削除</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="completed-task-list-container">
+            <h2>完了したタスク</h2>
+            <ul id="completed-task-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your TODO List Portal</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
