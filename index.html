@@ -3,99 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おしゃれなウェブサイト</title>
+    <title>部内スケジュール管理ポータル</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="header-section">
-        <div class="container">
-            <h1 class="logo">Company Name</h1>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#hero">トップ</a></li>
-                    <li><a href="#about">私たちについて</a></li>
-                    <li><a href="#services">サービス</a></li>
-                    <li><a href="#contact">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <h1>部内スケジュール管理</h1>
     </header>
 
-    <section id="hero" class="hero-section">
-        <div class="hero-content">
-            <h2 class="hero-title animate-on-scroll">革新的なソリューションで未来を切り拓く</h2>
-            <p class="hero-subtitle animate-on-scroll">私たちは最新技術と創造性で、お客様の課題を解決します。</p>
-            <a href="#" class="hero-button animate-on-scroll">詳しくはこちら</a>
-        </div>
-        <div class="hero-image animate-on-scroll">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb6f7b295?q=80&w=2069" alt="メインイメージ">
-        </div>
-    </section>
+    <main>
+        <section id="reminder-section">
+            <h2><span class="icon">🔔</span> 近日中の予定リマインダー</h2>
+            <div id="reminders-list">
+                </div>
+        </section>
 
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>私たちについて</h2>
-                <p>私たちのミッションとビジョン</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text animate-on-scroll">
-                    <p>ここに、私たちの事業内容やビジョンに関する説明文を記述します。お客様一人ひとりのニーズに寄り添い、最高のサービスを提供することをお約束します。</p>
-                    <p>私たちの強みは、長年の経験と最新の技術を組み合わせた独自のノウハウにあります。どのような課題にも柔軟に対応し、最適な解決策を導き出します。</p>
+        <section id="schedule-form-section">
+            <h2><span class="icon">📅</span> 新しい予定を追加</h2>
+            <form id="schedule-form">
+                <div class="form-group">
+                    <label for="member">担当者</label>
+                    <select id="member" name="member" multiple>
+                        <option value="西田">西田</option>
+                        <option value="髙原">髙原</option>
+                        <option value="中尾">中尾</option>
+                    </select>
+                    <small>複数人選択可 (Ctrlキー or Commandキーを押しながらクリック)</small>
                 </div>
-                <div class="about-image animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070" alt="アバウトイメージ">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="services" class="services-section">
-        <div class="container">
-             <div class="section-title animate-on-scroll">
-                <h2>サービス</h2>
-                <p>私たちが提供する価値</p>
-            </div>
-            <div class="services-grid">
-                 <div class="service-item animate-on-scroll">
-                    <h3>Webサイト制作</h3>
-                    <p>デザインから実装まで、一貫して高品質なウェブサイトを制作します。</p>
+                <div class="form-group">
+                    <label for="title">予定内容</label>
+                    <input type="text" id="title" name="title" required placeholder="例：〇〇プロジェクト定例会議">
                 </div>
-                <div class="service-item animate-on-scroll">
-                    <h3>コンサルティング</h3>
-                    <p>お客様のビジネスを分析し、最適なIT戦略を提案します。</p>
-                </div>
-                <div class="service-item animate-on-scroll">
-                    <h3>システム開発</h3>
-                    <p>業務を効率化するカスタムシステムをオーダーメイドで開発します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-             <div class="section-title animate-on-scroll">
-                <h2>お問い合わせ</h2>
-                <p>お気軽にご連絡ください</p>
-            </div>
-             <form class="contact-form animate-on-scroll">
-                <input type="text" placeholder="お名前">
-                <input type="email" placeholder="メールアドレス">
-                <textarea placeholder="メッセージ"></textarea>
-                <button type="submit" class="submit-button">送信</button>
+                <div class="form-group">
+                    <label for="date">日付</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group inline-group">
+                    <input type="time" id="time" name="time">
+                    <input type="checkbox" id="all-day" name="all-day">
+                    <label for="all-day">終日</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="repeat-type">繰り返し設定</label>
+                    <select id="repeat-type" name="repeat-type">
+                        <option value="none">なし</option>
+                        <option value="weekly">毎週</option>
+                        <option value="monthly">毎月</option>
+                    </select>
+                </div>
+                
+                <div id="repeat-options" class="hidden">
+                    <div id="weekly-options" class="hidden">
+                        <label>曜日を選択</label>
+                        <div>
+                            <input type="checkbox" id="weekday-sun" name="weekday" value="0"><label for="weekday-sun">日</label>
+                            <input type="checkbox" id="weekday-mon" name="weekday" value="1"><label for="weekday-mon">月</label>
+                            <input type="checkbox" id="weekday-tue" name="weekday" value="2"><label for="weekday-tue">火</label>
+                            <input type="checkbox" id="weekday-wed" name="weekday" value="3"><label for="weekday-wed">水</label>
+                            <input type="checkbox" id="weekday-thu" name="weekday" value="4"><label for="weekday-thu">木</label>
+                            <input type="checkbox" id="weekday-fri" name="weekday" value="5"><label for="weekday-fri">金</label>
+                            <input type="checkbox" id="weekday-sat" name="weekday" value="6"><label for="weekday-sat">土</label>
+                        </div>
+                    </div>
+                    <div id="monthly-options" class="hidden">
+                        <label for="monthly-day">毎月何日？</label>
+                        <input type="number" id="monthly-day" name="monthly-day" min="1" max="31"> 日
+                    </div>
+                    <div class="form-group">
+                        <label for="holiday-handling">休日が重なった場合</label>
+                        <select id="holiday-handling" name="holiday-handling">
+                            <option value="after">後ろの営業日にずらす</option>
+                            <option value="before">前の営業日にずらす</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">分類（カテゴリ）</label>
+                    <input type="text" id="category" name="category" placeholder="例：会議、訪問、社内業務など">
+                </div>
+
+                <button type="submit" class="submit-btn">予定を登録する</button>
             </form>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer-section">
-        <div class="container">
-            <p>&copy; 2025 Company Name. All rights reserved.</p>
-        </div>
+        <section id="schedule-display-section">
+            <h2><span class="icon">📋</span> スケジュール一覧</h2>
+            <div id="schedule-list">
+                </div>
+        </section>
+
+        <section id="holiday-settings-section">
+            <h2><span class="icon">⚙️</span> 休日設定</h2>
+            <p>土日祝日以外の休日（夏季休暇など）を追加できます。</p>
+            <form id="holiday-form">
+                <div class="form-group">
+                    <label for="custom-holiday">日付を選択</label>
+                    <input type="date" id="custom-holiday" name="custom-holiday">
+                    <button type="submit">休日として追加</button>
+                </div>
+            </form>
+            <h3>特別休日リスト</h3>
+            <ul id="holiday-list">
+                </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 部内スケジュール管理</p>
     </footer>
 
     <script src="script.js"></script>
