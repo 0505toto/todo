@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>部内スケジュールポータル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>部内スケジュールポータル</h1>
+    <button id="addScheduleBtn">＋予定を追加</button>
+  </header>
+
+  <!-- 予定追加モーダル -->
+  <div id="scheduleModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>予定を追加</h2>
+      <form id="scheduleForm">
+        <label for="members">担当者（複数可）</label>
+        <select id="members" name="members" multiple>
+          <option value="西田">西田</option>
+          <option value="髙原">髙原</option>
+          <option value="中尾">中尾</option>
+        </select>
+
+        <label for="title">予定内容</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="date">日付</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">時間</label>
+        <input type="time" id="time" name="time">
+        <label>
+          <input type="checkbox" id="allDay" name="allDay">
+          終日
+        </label>
+
+        <fieldset>
+          <legend>定期的に設定</legend>
+          <label><input type="radio" name="repeatType" value="none" checked> 設定なし</label>
+          <label><input type="radio" name="repeatType" value="weekly"> 毎週曜日指定</label>
+          <select id="weekdaySelect" disabled>
+            <option value="0">日曜</option>
+            <option value="1">月曜</option>
+            <option value="2">火曜</option>
+            <option value="3">水曜</option>
+            <option value="4">木曜</option>
+            <option value="5">金曜</option>
+            <option value="6">土曜</option>
+          </select>
+          <label><input type="radio" name="repeatType" value="monthly"> 毎月日付指定</label>
+          <input type="number" id="monthlyDate" min="1" max="31" disabled>
+
+          <div id="adjustHoliday" class="adjust-options hidden">
+            <label>休日が重なった場合：</label>
+            <label><input type="radio" name="adjustHoliday" value="before"> 前営業日</label>
+            <label><input type="radio" name="adjustHoliday" value="after"> 後営業日</label>
+          </div>
+        </fieldset>
+
+        <label for="category">カテゴリー（任意）</label>
+        <input type="text" id="category" name="category" placeholder="例：会議、作業、外出など">
+
+        <button type="submit">保存</button>
+        <button type="button" id="cancelBtn">キャンセル</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- スケジュール一覧表示エリア -->
+  <main>
+    <section id="scheduleList">
+      <h2>予定一覧</h2>
+      <ul id="scheduleItems">
+        <!-- JavaScriptで追加予定 -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Schedule App</p>
+  </footer>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>
